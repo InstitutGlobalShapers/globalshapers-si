@@ -26,15 +26,18 @@
 		'Be stuck doing mindless data entry without seeing the big picture'
 	];
 
-	const facts: { label: string; value: string; highlight?: boolean }[] = [
-		{ label: 'Academy timeline', value: 'Jul 1 – Aug 1, 2026\n4 weeks, on-site' },
-		{ label: 'Internship timeline', value: 'Jul 1, 2026 – Jan 31, 2027\non-site' },
+	const stats = [
+		{ value: '12', label: 'fully funded scholarships' },
+		{ value: '6 months', label: 'paid internship abroad' },
+		{ value: '€800–1,050', label: 'monthly support' }
+	];
+
+	const specs = [
 		{ label: 'Location', value: 'Ljubljana, Slovenia' },
-		{ label: 'Scholarships', value: '12 spots available' },
-		{ label: 'Applicants', value: 'Ambitious, hard-working\nyoung people aged 18–30' },
-		{ label: 'Who can apply', value: 'Europe, UK, USA,\nCanada, Singapore' },
-		{ label: 'Focus areas', value: 'Marketing · Sales\nBusiness Development' },
-		{ label: 'Monthly support', value: '€800–1,050 / month', highlight: true }
+		{ label: 'Academy sprint', value: 'Jul 1 – Aug 1, 2026 · 4 weeks, on-site' },
+		{ label: 'Internship', value: 'Jul 1 – Jan 31, 2027 · on-site' },
+		{ label: 'Who can apply', value: 'EU, UK, USA, Canada, Singapore · Ages 18–30' },
+		{ label: 'Focus areas', value: 'Marketing · Sales · Business Development' }
 	];
 
 	const steps = [
@@ -187,21 +190,21 @@
 
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
-		<div use:inView>
+		<div use:inView class="text-left">
 			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">The offer</p>
 			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Not your typical internship</h2>
-			<p class="mt-3 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
+			<p class="mx-auto mt-3 text-[0.9375rem] leading-relaxed text-slate-600">
 				We've all seen it: brilliant young people who are theoretically overqualified but lack the raw
 				experience and high-level skills that top-tier companies actually demand.
 			</p>
-			<p class="mt-2 mb-8 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
+			<p class="mx-auto mt-2 text-[0.9375rem] leading-relaxed text-slate-600">
 				The program is designed to allow selected participants to completely bypass the entry-level
 				struggle — or in some cases, completely switch career paths.
 			</p>
 		</div>
 
-		<div class="grid max-w-2xl gap-4 md:grid-cols-2">
-			<div use:inView={{ delay: 0 }} class="rounded-xl border border-green-200 bg-white p-6 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]">
+		<div class="mt-8 grid gap-4 md:grid-cols-2">
+			<div use:inView={{ delay: 0 }} class="rounded-xl border border-green-200 bg-white p-6 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px]  hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]">
 				<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-green-700">You will</p>
 				{#each willItems as item (item)}
 					<div class="flex gap-3 border-b border-slate-100 py-3 last:border-0 last:pb-0">
@@ -221,7 +224,7 @@
 			</div>
 		</div>
 
-		<p use:inView={{ delay: 80 }} class="mt-7 max-w-2xl text-[0.9375rem] font-medium italic text-[var(--gs-primary)]">
+		<p use:inView={{ delay: 80 }} class="mt-8 text-center text-[0.9375rem] font-medium italic text-[var(--gs-primary)]">
 			By the time you finish the 6-month paid internship, you'll have a proven track record of
 			international success.
 		</p>
@@ -242,23 +245,30 @@
 				for the top 1% of applicants.
 			</p>
 		</div>
-		<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-			{#each facts as fact, i (fact.label)}
+		<!-- Key stats -->
+		<div class="mb-10 grid grid-cols-3 gap-4">
+			{#each stats as stat, i (stat.value)}
 				<div
-					use:inView={{ delay: i * 50 }}
-					class="cursor-default rounded-lg p-4 transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(0,0,0,0.06)] {fact.highlight
-						? 'border border-blue-100 bg-blue-50'
-						: 'bg-slate-50'}"
+					use:inView={{ delay: i * 80 }}
+					class="rounded-xl border border-blue-100 bg-blue-50 px-6 py-8 text-center"
 				>
-					<p class="mb-1.5 text-[0.6875rem] font-medium uppercase tracking-wide text-slate-500">
-						{fact.label}
-					</p>
-					<p class="whitespace-pre-line text-[0.8125rem] font-medium leading-snug text-[var(--gs-primary)]">
-						{fact.value}
-					</p>
+					<p class="text-3xl font-bold tracking-tight text-[var(--gs-primary)]">{stat.value}</p>
+					<p class="mt-2 text-xs font-medium text-slate-500">{stat.label}</p>
 				</div>
 			{/each}
 		</div>
+
+		<!-- Spec list -->
+		<dl class="grid gap-x-16 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+			{#each specs as spec, i (spec.label)}
+				<div use:inView={{ delay: 240 + i * 50 }}>
+					<dt class="text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
+						{spec.label}
+					</dt>
+					<dd class="mt-1 text-sm font-medium text-[var(--gs-primary)]">{spec.value}</dd>
+				</div>
+			{/each}
+		</dl>
 	</div>
 </section>
 
