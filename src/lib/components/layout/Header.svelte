@@ -16,89 +16,23 @@
 	});
 </script>
 
-<header class="header" class:scrolled>
-	<div class="inner">
+	<header
+		class={`fixed inset-x-0 top-0 z-50 px-6 py-5 transition-[background,padding,box-shadow] duration-[350ms] ${scrolled ? 'bg-[linear-gradient(to_bottom,rgba(26,48,82,0.97)_0%,rgba(30,58,95,0.91)_100%)] py-[14px] shadow-[0_1px_0_rgba(255,255,255,0.06),0_4px_20px_rgba(0,0,0,0.14)] backdrop-blur-[14px]' : ''}`}
+	>
+		<div class="mx-auto flex max-w-6xl items-center justify-between">
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-		<a href="/" class="logo">
-			<img src={logo} alt="Global Shapers Ljubljana" class="logo-img" />
-			<span class="sep" aria-hidden="true">·</span>
-			<span class="sub">Shapers Academy</span>
+			<a href="/" class="flex items-center gap-2 no-underline">
+				<img src={logo} alt="Global Shapers Ljubljana" class={`block h-10 w-auto ${scrolled ? 'brightness-0 invert' : ''}`} />
+				<span aria-hidden="true" class={`text-[13px] transition-colors duration-[350ms] ${scrolled ? 'text-blue-300/60' : 'text-[rgba(30,58,95,0.45)]'}`}>·</span>
+				<span class={`text-[13px] transition-colors duration-[350ms] ${scrolled ? 'text-blue-300' : 'text-[rgba(30,58,95,0.55)]'}`}>Shapers Academy</span>
 		</a>
-		<a href={FORM_URL} target="_blank" rel="noopener noreferrer" class="cta">Apply now →</a>
+			<a
+				href={FORM_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="rounded-md bg-[var(--gs-accent)] px-4 py-2 text-[13px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
+			>
+				Apply now →
+			</a>
 	</div>
 </header>
-
-<style>
-	.header {
-		position: fixed;
-		inset: 0 0 auto 0;
-		z-index: 50;
-		padding: 20px 24px;
-		transition:
-			background 0.35s ease,
-			padding 0.35s ease,
-			box-shadow 0.35s ease;
-	}
-	.header.scrolled {
-		background: linear-gradient(to bottom, rgba(26, 48, 82, 0.97) 0%, rgba(30, 58, 95, 0.91) 100%);
-		backdrop-filter: blur(14px);
-		-webkit-backdrop-filter: blur(14px);
-		padding: 14px 24px;
-		box-shadow:
-			0 1px 0 rgba(255, 255, 255, 0.06),
-			0 4px 20px rgba(0, 0, 0, 0.14);
-	}
-
-	.inner {
-		max-width: 72rem;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.logo {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-		text-decoration: none;
-	}
-	.logo-img {
-		height: 40px;
-		width: auto;
-		display: block;
-	}
-	.header.scrolled .logo-img {
-		filter: brightness(0) invert(1);
-	}
-	.sep {
-		font-size: 13px;
-		color: rgba(30, 58, 95, 0.45);
-		transition: color 0.35s;
-	}
-	.sub {
-		font-size: 13px;
-		color: rgba(30, 58, 95, 0.55);
-		transition: color 0.35s;
-	}
-	.header.scrolled .sep {
-		color: rgba(147, 197, 253, 0.6);
-	}
-	.header.scrolled .sub {
-		color: #93c5fd;
-	}
-
-	.cta {
-		font-size: 13px;
-		font-weight: 600;
-		padding: 8px 16px;
-		border-radius: 6px;
-		background: var(--gs-accent);
-		color: #fff;
-		text-decoration: none;
-		transition: opacity 0.2s;
-	}
-	.cta:hover {
-		opacity: 0.88;
-	}
-</style>

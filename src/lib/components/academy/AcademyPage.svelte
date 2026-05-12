@@ -27,8 +27,8 @@
 	];
 
 	const facts: { label: string; value: string; highlight?: boolean }[] = [
-		{ label: 'Academy timeline', value: 'Aug 1 – ~Aug 28, 2026\n4 weeks, on-site' },
-		{ label: 'Internship timeline', value: 'Aug 1, 2026 – Jan 31, 2027\non-site' },
+		{ label: 'Academy timeline', value: 'Jul 1 – Aug 1, 2026\n4 weeks, on-site' },
+		{ label: 'Internship timeline', value: 'Jul 1, 2026 – Jan 31, 2027\non-site' },
 		{ label: 'Location', value: 'Ljubljana, Slovenia' },
 		{ label: 'Scholarships', value: '12 spots available' },
 		{ label: 'Applicants', value: 'Ambitious, hard-working\nyoung people aged 18–30' },
@@ -47,7 +47,7 @@
 		{
 			n: '2',
 			title: 'The assessments',
-			body: 'Two parts: a self-assessment (working style and motivations), and a problem-solving challenge. This is where you prove you belong in the top 1% — it tests raw ability to research, connect the dots, and tackle real-life scenarios.',
+			body: 'Two parts: a self-assessment (working style and team fit), and a problem-solving challenge that tests raw research ability and adaptability. This is where you prove you belong in the top 1%. Note: copy-pasted AI answers result in automatic rejection.',
 			final: false
 		},
 		{
@@ -143,17 +143,17 @@
 </svelte:head>
 
 <!-- pt-28 accounts for fixed header height (~56px) + breathing room -->
-<section class="hero-section px-6 pb-20 pt-28 text-center md:pt-32">
+<section class="bg-[linear-gradient(to_bottom,#dbeafe_0%,#eff6ff_40%,#fff_100%)] px-6 pb-20 pt-28 text-center md:pt-32">
 	<div class="hero-in mx-auto max-w-3xl">
 		<div class="mb-7 flex flex-wrap items-center justify-center gap-2">
-			<span class="badge">World Economic Forum Network</span>
-			<span class="badge">Fully funded scholarship</span>
-			<span class="badge">Ljubljana, Slovenia</span>
+			<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-[13px] py-1 text-xs font-medium text-blue-800">World Economic Forum Network</span>
+			<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-[13px] py-1 text-xs font-medium text-blue-800">Fully funded scholarship</span>
+			<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-[13px] py-1 text-xs font-medium text-blue-800">Ljubljana, Slovenia</span>
 		</div>
 
-		<h1 class="mb-5 text-4xl font-semibold leading-[1.15] tracking-tight md:text-[2.75rem]" style="color: var(--gs-primary)">
+		<h1 class="mb-5 text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--gs-primary)] md:text-[2.75rem]">
 			The international career accelerator<br class="hidden md:block" />
-			for the <span style="color: var(--gs-accent)">top 1%</span>
+			for the <span class="text-[var(--gs-accent)]">top 1%</span>
 		</h1>
 
 		<p class="mx-auto mb-4 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
@@ -166,25 +166,30 @@
 			step into a real business, tackle live company challenges, and hardwire your skills through
 			actual execution.
 		</p>
-		<p class="mx-auto mb-9 max-w-xl text-[0.9375rem] font-medium italic" style="color: var(--gs-primary)">
+		<p class="mx-auto mb-9 max-w-xl text-[0.9375rem] font-medium italic text-[var(--gs-primary)]">
 			Shapers Academy is not only here to help you develop and fast-track your career — it's here to
 			help you shape it.
 		</p>
 
-		<a href={FORM_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">
+		<a
+			href={FORM_URL}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="inline-block rounded-lg bg-[var(--gs-accent)] px-9 py-[13px] text-[0.9375rem] font-semibold text-white no-underline transition-opacity duration-150 hover:opacity-90"
+		>
 			Apply for a scholarship →
 		</a>
 		<p class="mt-4 text-sm text-slate-500">12 spots available · Applications close May 20, 2026</p>
 	</div>
 </section>
 
-<div class="divider"></div>
+<div class="h-px bg-slate-200"></div>
 
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<p class="sec-label">The offer</p>
-			<h2 class="sec-heading">Not your typical internship</h2>
+			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">The offer</p>
+			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Not your typical internship</h2>
 			<p class="mt-3 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
 				We've all seen it: brilliant young people who are theoretically overqualified but lack the raw
 				experience and high-level skills that top-tier companies actually demand.
@@ -196,7 +201,7 @@
 		</div>
 
 		<div class="grid max-w-2xl gap-4 md:grid-cols-2">
-			<div use:inView={{ delay: 0 }} class="card rounded-xl border border-green-200 bg-white p-6">
+			<div use:inView={{ delay: 0 }} class="rounded-xl border border-green-200 bg-white p-6 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]">
 				<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-green-700">You will</p>
 				{#each willItems as item (item)}
 					<div class="flex gap-3 border-b border-slate-100 py-3 last:border-0 last:pb-0">
@@ -205,7 +210,7 @@
 					</div>
 				{/each}
 			</div>
-			<div use:inView={{ delay: 100 }} class="card rounded-xl border border-slate-200 bg-white p-6">
+			<div use:inView={{ delay: 100 }} class="rounded-xl border border-slate-200 bg-white p-6 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]">
 				<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">You won't</p>
 				{#each wontItems as item (item)}
 					<div class="flex gap-3 border-b border-slate-100 py-3 last:border-0 last:pb-0">
@@ -216,22 +221,22 @@
 			</div>
 		</div>
 
-		<p use:inView={{ delay: 80 }} class="mt-7 max-w-2xl text-[0.9375rem] font-medium italic" style="color: var(--gs-primary)">
+		<p use:inView={{ delay: 80 }} class="mt-7 max-w-2xl text-[0.9375rem] font-medium italic text-[var(--gs-primary)]">
 			By the time you finish the 6-month paid internship, you'll have a proven track record of
 			international success.
 		</p>
 	</div>
 </section>
 
-<div class="divider"></div>
 
-<div class="divider"></div>
+
+<div class="h-px bg-slate-200"></div>
 
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<p class="sec-label">Quick facts</p>
-			<h2 class="sec-heading">Programme at a glance</h2>
+			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Quick facts</p>
+			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Programme at a glance</h2>
 			<p class="mt-3 mb-10 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
 				Only 12 scholarships are available in this pilot edition. Why 12? Because we're only looking
 				for the top 1% of applicants.
@@ -241,17 +246,14 @@
 			{#each facts as fact, i (fact.label)}
 				<div
 					use:inView={{ delay: i * 50 }}
-					class="card-fact rounded-lg p-4 {fact.highlight
+					class="cursor-default rounded-lg p-4 transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(0,0,0,0.06)] {fact.highlight
 						? 'border border-blue-100 bg-blue-50'
 						: 'bg-slate-50'}"
 				>
 					<p class="mb-1.5 text-[0.6875rem] font-medium uppercase tracking-wide text-slate-500">
 						{fact.label}
 					</p>
-					<p
-						class="whitespace-pre-line text-[0.8125rem] font-medium leading-snug"
-						style="color: var(--gs-primary)"
-					>
+					<p class="whitespace-pre-line text-[0.8125rem] font-medium leading-snug text-[var(--gs-primary)]">
 						{fact.value}
 					</p>
 				</div>
@@ -260,7 +262,7 @@
 	</div>
 </section>
 
-<div class="divider"></div>
+<div class="h-px bg-slate-200"></div>
 
 <section class="bg-slate-50">
 	<div class="grid grid-cols-3 gap-px bg-slate-200">
@@ -271,8 +273,8 @@
 	<div class="px-6 py-14">
 		<div class="mx-auto max-w-4xl">
 			<div use:inView>
-				<p class="sec-label">Your base</p>
-				<h2 class="sec-heading">Ljubljana, Slovenia</h2>
+				<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Your base</p>
+				<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Ljubljana, Slovenia</h2>
 				<p class="mt-3 mb-7 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
 					Slovenia's capital sits at the centre of Europe — 2 hours from Vienna, Venice, and Zagreb.
 					Compact, walkable, and cosmopolitan, with a vibrant young professional scene and a cost of
@@ -280,7 +282,7 @@
 				</p>
 				<div class="flex flex-wrap gap-2">
 					{#each ['✈ 2h from Vienna & Venice', '☀ 300 days of sun / year', '⌂ Rent €300–500/mo', '⊙ Tight expat community'] as tag (tag)}
-						<span class="badge">{tag}</span>
+						<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-[13px] py-1 text-xs font-medium text-blue-800">{tag}</span>
 					{/each}
 				</div>
 			</div>
@@ -288,25 +290,24 @@
 	</div>
 </section>
 
-<div class="divider"></div>
+<div class="h-px bg-slate-200"></div>
 
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<p class="sec-label">Application process</p>
-			<h2 class="sec-heading mb-10">How it works</h2>
+			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Application process</p>
+			<h2 class="mb-10 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">How it works</h2>
 		</div>
 		<div class="max-w-2xl">
 			{#each steps as step, i (step.n)}
 				<div use:inView={{ delay: i * 80 }} class="flex gap-5 border-b border-slate-100 py-6 last:border-0">
 					<div
-						class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[0.8125rem] font-semibold text-white"
-						style="background: {step.final ? 'var(--gs-primary)' : 'var(--gs-accent)'}"
+						class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[0.8125rem] font-semibold text-white {step.final ? 'bg-[var(--gs-primary)]' : 'bg-[var(--gs-accent)]'}"
 					>
 						{step.n}
 					</div>
 					<div>
-						<p class="mb-1.5 text-sm font-semibold" style="color: var(--gs-primary)">
+						<p class="mb-1.5 text-sm font-semibold text-[var(--gs-primary)]">
 							{step.title}
 						</p>
 						<p class="text-[0.8125rem] leading-relaxed text-slate-600">{step.body}</p>
@@ -317,7 +318,7 @@
 	</div>
 </section>
 
-<div class="divider"></div>
+<div class="h-px bg-slate-200"></div>
 
 <section class="bg-slate-50">
 	<div class="grid grid-cols-4 gap-px bg-slate-200">
@@ -329,8 +330,8 @@
 	<div class="px-6 py-14">
 		<div class="mx-auto max-w-4xl">
 			<div use:inView>
-				<p class="sec-label">Community support</p>
-				<h2 class="sec-heading">You won't be navigating this alone</h2>
+				<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Community support</p>
+				<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">You won't be navigating this alone</h2>
 				<p class="mt-3 mb-3 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
 					Most international programs drop you in a new country and leave you to navigate bureaucracy,
 					logistics, and housing on your own. Not this one.
@@ -343,8 +344,8 @@
 			</div>
 			<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 				{#each communityCards as card, i (card.title)}
-					<div use:inView={{ delay: i * 70 }} class="card rounded-xl border border-slate-200 bg-white p-5">
-						<p class="mb-2 text-sm font-semibold" style="color: var(--gs-primary)">{card.title}</p>
+					<div use:inView={{ delay: i * 70 }} class="rounded-xl border border-slate-200 bg-white p-5 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]">
+						<p class="mb-2 text-sm font-semibold text-[var(--gs-primary)]">{card.title}</p>
 						<p class="text-[0.8125rem] leading-relaxed text-slate-600">{card.body}</p>
 						{#if card.tag}
 							<span
@@ -360,9 +361,9 @@
 	</div>
 </section>
 
-<div class="divider"></div>
+<div class="h-px bg-slate-200"></div>
 
-<section class="px-6 py-14" style="background: var(--gs-primary)">
+<section class="bg-[var(--gs-primary)] px-6 py-14">
 	<div class="mx-auto flex max-w-4xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
 		<div use:inView>
 			<p class="mb-1.5 text-[0.6875rem] font-semibold uppercase tracking-widest text-blue-200">
@@ -395,8 +396,8 @@
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<p class="sec-label">FAQ</p>
-			<h2 class="sec-heading mb-10">Frequently asked questions</h2>
+			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">FAQ</p>
+			<h2 class="mb-10 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Frequently asked questions</h2>
 		</div>
 		<div class="max-w-2xl">
 			{#each faqs as faq, i (faq.q)}
@@ -422,9 +423,9 @@
 	</div>
 </section>
 
-<div class="divider"></div>
+<div class="h-px bg-slate-200"></div>
 
-<section class="px-6 py-24 text-center" style="background: var(--gs-primary)">
+<section class="bg-[var(--gs-primary)] px-6 py-24 text-center">
 	<div use:inView class="mx-auto max-w-lg">
 		<h2 class="mb-3 text-3xl font-semibold tracking-tight text-white">
 			12 spots. One shot at the top 1%.
@@ -455,90 +456,8 @@
 		href={FORM_URL}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="block w-full rounded-lg py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
-		style="background: var(--gs-accent)"
+		class="block w-full rounded-lg bg-[var(--gs-accent)] py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
 	>
 		Apply now — 12 spots left
 	</a>
 </div>
-
-<style>
-	.hero-section {
-		background: linear-gradient(to bottom, #dbeafe 0%, #eff6ff 40%, #fff 100%);
-	}
-
-	.divider {
-		height: 1px;
-		background: #e2e8f0;
-	}
-
-	.badge {
-		display: inline-flex;
-		align-items: center;
-		background: #fff;
-		border: 0.5px solid #bfdbfe;
-		border-radius: 9999px;
-		padding: 4px 13px;
-		font-size: 12px;
-		color: #1e40af;
-		font-weight: 500;
-	}
-
-	.sec-label {
-		font-size: 11px;
-		font-weight: 600;
-		letter-spacing: 0.09em;
-		text-transform: uppercase;
-		color: var(--gs-accent);
-		margin-bottom: 10px;
-	}
-
-	.sec-heading {
-		font-size: 1.5rem;
-		font-weight: 600;
-		color: var(--gs-primary);
-		line-height: 1.25;
-		letter-spacing: -0.01em;
-	}
-
-	.btn-primary {
-		display: inline-block;
-		background: var(--gs-accent);
-		color: #fff;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		padding: 13px 36px;
-		border-radius: 8px;
-		text-decoration: none;
-		transition: opacity 0.15s;
-	}
-	.btn-primary:hover {
-		opacity: 0.9;
-	}
-
-	/* Card hover lift */
-	.card {
-		transition:
-			transform 0.2s ease,
-			box-shadow 0.2s ease;
-	}
-	.card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-	}
-
-	.card-fact {
-		transition:
-			transform 0.2s ease,
-			box-shadow 0.2s ease;
-		cursor: default;
-	}
-	.card-fact:hover {
-		transform: translateY(-1px);
-		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-	}
-
-	.rotate-45 {
-		transform: rotate(45deg);
-	}
-</style>

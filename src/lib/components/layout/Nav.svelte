@@ -14,17 +14,6 @@
 <nav class="flex items-center gap-6">
 	{#each items as item (item.href)}
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-		<a href={item.href}>{item.label}</a>
+		<a href={item.href} class="text-[13px] text-blue-300 no-underline transition-colors hover:text-white">{item.label}</a>
 	{/each}
 </nav>
-
-<style>
-	a {
-		color: #93c5fd;
-		font-size: 13px;
-		text-decoration: none;
-	}
-	a:hover {
-		color: #fff;
-	}
-</style>

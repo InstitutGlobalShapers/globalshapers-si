@@ -2,11 +2,6 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-body {
-	font-family: 'Inter', system-ui, -apple-system, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-
 :root {
 	--gs-primary: #1e3a5f;
 	--gs-accent: #2563eb;
