@@ -29,7 +29,7 @@
 	const stats = [
 		{ value: '12', label: 'fully funded scholarships' },
 		{ value: '6 months', label: 'paid internship abroad' },
-		{ value: '€800–1,050', label: 'monthly support' }
+		{ value: '800€ – 1050€', label: 'monthly support' }
 	];
 
 	const specs = [
@@ -37,7 +37,6 @@
 		{ label: 'Academy sprint', value: 'Jul 1 – Aug 1, 2026 · 4 weeks, on-site' },
 		{ label: 'Internship', value: 'Jul 1 – Jan 31, 2027 · on-site' },
 		{ label: 'Who can apply', value: 'EU, UK, USA, Canada, Singapore · Ages 18–30' },
-		{ label: 'Focus areas', value: 'Marketing · Sales · Business Development' }
 	];
 
 	const steps = [
@@ -71,7 +70,7 @@
 		{
 			title: 'Complete logistical support',
 			body: 'Pre-arrival housing help, legal registrations, and handling administrative hurdles so you can focus entirely on your career.',
-			tag: 'Avg. rent €300–500/mo'
+			tag: 'Avg. rent 300€–500€/mo'
 		},
 		{
 			title: 'No "lonely traveller" phase',
@@ -105,7 +104,7 @@
 		},
 		{
 			q: 'Does the Academy provide housing?',
-			a: 'No. The Institute does not own dorms (yet), but will 100% help you sort out the living situation prior to your arrival if selected. Average rent in Ljubljana is €300–500/month for a room in a shared flat.'
+			a: 'No. The Institute does not own dorms (yet), but will 100% help you sort out the living situation prior to your arrival if selected. Average rent in Ljubljana is 300€ – 500€/month for a room in a shared flat.'
 		},
 		{
 			q: 'Which regions can apply?',
@@ -145,7 +144,6 @@
 	/>
 </svelte:head>
 
-<!-- pt-28 accounts for fixed header height (~56px) + breathing room -->
 <section class="bg-[linear-gradient(to_bottom,#dbeafe_0%,#eff6ff_40%,#fff_100%)] px-6 pb-20 pt-28 text-center md:pt-32">
 	<div class="hero-in mx-auto max-w-3xl">
 		<div class="mb-7 flex flex-wrap items-center justify-center gap-2">
@@ -169,7 +167,7 @@
 			step into a real business, tackle live company challenges, and hardwire your skills through
 			actual execution.
 		</p>
-		<p class="mx-auto mb-9 max-w-xl text-[0.9375rem] font-medium italic text-[var(--gs-primary)]">
+		<p class="mx-auto mb-6 max-w-xl text-[0.9375rem] font-medium text-[var(--gs-primary)]">
 			Shapers Academy is not only here to help you develop and fast-track your career — it's here to
 			help you shape it.
 		</p>
@@ -204,34 +202,35 @@
 		</div>
 
 		<div class="mt-8 grid gap-4 md:grid-cols-2">
-			<div use:inView={{ delay: 0 }} class="rounded-xl border border-green-200 bg-white p-6 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px]  hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]">
-				<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-green-700">You will</p>
-				{#each willItems as item (item)}
-					<div class="flex gap-3 border-b border-slate-100 py-3 last:border-0 last:pb-0">
-						<span class="mt-0.5 shrink-0 text-sm text-green-500">✓</span>
-						<p class="text-[0.8125rem] leading-relaxed text-slate-700">{item}</p>
-					</div>
-				{/each}
+			<div use:inView={{ delay: 0 }}>
+				<div class="h-full rounded-xl border border-green-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+					<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-green-700">You will</p>
+					{#each willItems as item (item)}
+						<div class="flex gap-3 border-b border-slate-100 py-3 last:border-0 last:pb-0">
+							<span class="mt-0.5 shrink-0 text-sm text-green-500">✓</span>
+							<p class="text-[0.8125rem] leading-relaxed text-slate-700">{item}</p>
+						</div>
+					{/each}
+				</div>
 			</div>
-			<div use:inView={{ delay: 100 }} class="rounded-xl border border-slate-200 bg-white p-6 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]">
-				<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">You won't</p>
-				{#each wontItems as item (item)}
-					<div class="flex gap-3 border-b border-slate-100 py-3 last:border-0 last:pb-0">
-						<span class="mt-0.5 shrink-0 text-sm text-slate-300">✕</span>
-						<p class="text-[0.8125rem] leading-relaxed text-slate-500">{item}</p>
-					</div>
-				{/each}
+			<div use:inView={{ delay: 100 }}>
+				<div class="h-full rounded-xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+					<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">You won't</p>
+					{#each wontItems as item (item)}
+						<div class="flex gap-3 border-b border-slate-100 py-3 last:border-0 last:pb-0">
+							<span class="mt-0.5 shrink-0 text-sm text-slate-300">✕</span>
+							<p class="text-[0.8125rem] leading-relaxed text-slate-500">{item}</p>
+						</div>
+					{/each}
+				</div>
 			</div>
 		</div>
 
-		<p use:inView={{ delay: 80 }} class="mt-8 text-center text-[0.9375rem] font-medium italic text-[var(--gs-primary)]">
-			By the time you finish the 6-month paid internship, you'll have a proven track record of
-			international success.
+		<p use:inView={{ delay: 80 }} class="mt-8 text-center text-[0.9375rem] font-medium text-[var(--gs-primary)]">
+			By the time you finish the 6-month paid internship, you'll have a proven track record of international success.
 		</p>
 	</div>
 </section>
-
-
 
 <div class="h-px bg-slate-200"></div>
 
@@ -241,12 +240,14 @@
 			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Quick facts</p>
 			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Programme at a glance</h2>
 			<p class="mt-3 mb-10 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
-				Only 12 scholarships are available in this pilot edition. Why 12? Because we're only looking
-				for the top 1% of applicants.
+				Only 12 scholarships are available. Why 12? Because we're only looking for the top 1% of applicants.
+				<br>
+				During your internship, you'll receive a monthly stipend designed to fully cover your living expenses in Ljubljana, allowing you to focus entirely on gaining experience and accelerating your career.
+				<br>
+				Focus areas are marketing, sales, and business development — but the skills you learn are highly transferable and applicable across various roles and industries.
 			</p>
 		</div>
-		<!-- Key stats -->
-		<div class="mb-10 grid grid-cols-3 gap-4">
+		<div class="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
 			{#each stats as stat, i (stat.value)}
 				<div
 					use:inView={{ delay: i * 80 }}
@@ -258,8 +259,7 @@
 			{/each}
 		</div>
 
-		<!-- Spec list -->
-		<dl class="grid gap-x-16 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+		<dl class="grid gap-x-16 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
 			{#each specs as spec, i (spec.label)}
 				<div use:inView={{ delay: 240 + i * 50 }}>
 					<dt class="text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
@@ -291,7 +291,7 @@
 					living that lets your stipend go further.
 				</p>
 				<div class="flex flex-wrap gap-2">
-					{#each ['✈ 2h from Vienna & Venice', '☀ 300 days of sun / year', '⌂ Rent €300–500/mo', '⊙ Tight expat community'] as tag (tag)}
+					{#each ['✈ 2h from Vienna & Venice', '☀ 300 days of sun / year', '⌂ Rent 300€ – 500€/mo', '⊙ Tight expat community'] as tag (tag)}
 						<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-[13px] py-1 text-xs font-medium text-blue-800">{tag}</span>
 					{/each}
 				</div>
@@ -447,9 +447,9 @@
 			rel="noopener noreferrer"
 			class="inline-block rounded-lg bg-white px-9 py-3.5 text-[0.9375rem] font-semibold text-blue-900 transition-opacity hover:opacity-90"
 		>
-			Apply for your scholarship →
+			Apply for scholarship →
 		</a>
-		<p class="mt-7 text-sm text-blue-400">
+		<p class="mt-7 text-sm text-white">
 			Questions?
 			<a
 				href="mailto:globalshapersljubljana@gmail.com"
@@ -468,6 +468,6 @@
 		rel="noopener noreferrer"
 		class="block w-full rounded-lg bg-[var(--gs-accent)] py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
 	>
-		Apply now — 12 spots left
+		Apply now
 	</a>
 </div>
