@@ -1,3 +1,4 @@
+
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { inView } from '$lib/actions/animate.js';
@@ -8,9 +9,7 @@
 	import poletna from '$lib/assets/poletna_sola.webp';
 	import delavnice from '$lib/assets/delavnice_dogodki.webp';
 	import shapeTalk from '$lib/assets/shape_talk.webp';
-
-	const FORM_URL = 'https://docs.google.com/forms/d/1C3Niai_lcougUfLNecKx7BAbfg4dMUTPac46vsorGQc/viewform';
-	const WEBINAR_URL = FORM_URL;
+	import { FORM_URL, WEBINAR_URL } from '$lib/constants';
 
 	let openFaq = $state<number | null>(null);
 	const toggleFaq = (i: number) => (openFaq = openFaq === i ? null : i);
@@ -22,7 +21,7 @@
 	];
 	const wontItems = [
 		'Have to prove yourself by doing coffee runs or filing documents',
-		'Be treated like "just an intern" whose ideas are ignored',
+		'Be treated like "just an intern" whose ideas are ignored and who is left out of important meetings',
 		'Be stuck doing mindless data entry without seeing the big picture'
 	];
 
@@ -34,9 +33,9 @@
 
 	const specs = [
 		{ label: 'Location', value: 'Ljubljana, Slovenia' },
-		{ label: 'Academy sprint', value: 'Jul 1 – Aug 1, 2026 · 4 weeks, on-site' },
-		{ label: 'Internship', value: 'Jul 1 – Jan 31, 2027 · on-site' },
-		{ label: 'Who can apply', value: 'EU, UK, USA, Canada, Singapore · Ages 18–30' },
+		{ label: 'Academy sprint', value: 'Jul 1 – Aug 1, 2026\n4 weeks, on-site' },
+		{ label: 'Internship', value: 'Jul 1 – Jan 31, 2027\non-site' },
+		{ label: 'Who can apply', value: 'EU, UK, USA, Canada, Singapore\nAges 18–30' },
 	];
 
 	const steps = [
@@ -173,6 +172,7 @@
 		</p>
 
 		<a
+			// eslint-disable-next-line svelte/no-navigation-without-resolve
 			href={FORM_URL}
 			target="_blank"
 			rel="noopener noreferrer"
@@ -188,14 +188,14 @@
 
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
-		<div use:inView class="text-left">
+		<div use:inView>
 			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">The offer</p>
 			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Not your typical internship</h2>
-			<p class="mx-auto mt-3 text-[0.9375rem] leading-relaxed text-slate-600">
+			<p class="mt-3 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 				We've all seen it: brilliant young people who are theoretically overqualified but lack the raw
 				experience and high-level skills that top-tier companies actually demand.
 			</p>
-			<p class="mx-auto mt-2 text-[0.9375rem] leading-relaxed text-slate-600">
+			<p class="mt-2 mb-8 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 				The program is designed to allow selected participants to completely bypass the entry-level
 				struggle — or in some cases, completely switch career paths.
 			</p>
@@ -239,7 +239,7 @@
 		<div use:inView>
 			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Quick facts</p>
 			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Programme at a glance</h2>
-			<p class="mt-3 mb-10 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
+			<p class="mt-3 mb-10 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 				Only 12 scholarships are available. Why 12? Because we're only looking for the top 1% of applicants.
 				<br>
 				During your internship, you'll receive a monthly stipend designed to fully cover your living expenses in Ljubljana, allowing you to focus entirely on gaining experience and accelerating your career.
@@ -259,13 +259,13 @@
 			{/each}
 		</div>
 
-		<dl class="grid gap-x-16 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+		<dl class="grid gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
 			{#each specs as spec, i (spec.label)}
 				<div use:inView={{ delay: 240 + i * 50 }}>
 					<dt class="text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
 						{spec.label}
 					</dt>
-					<dd class="mt-1 text-sm font-medium text-[var(--gs-primary)]">{spec.value}</dd>
+					<dd class="mt-1 whitespace-pre-line text-sm font-medium text-[var(--gs-primary)]">{spec.value}</dd>
 				</div>
 			{/each}
 		</dl>
@@ -275,10 +275,10 @@
 <div class="h-px bg-slate-200"></div>
 
 <section class="bg-slate-50">
-	<div class="grid grid-cols-3 gap-px bg-slate-200">
+	<div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-3">
 		<img src={oldTown} alt="Ljubljana old town" class="aspect-[4/3] w-full object-cover" loading="lazy" />
 		<img src={gas25} alt="Shapers program in Ljubljana" class="aspect-[4/3] w-full object-cover" loading="lazy" />
-		<img src={gas252} alt="Global Shapers Ljubljana" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+		<img src={gas252} alt="Global Shapers Ljubljana" class="col-span-2 aspect-[2/1] w-full object-cover md:col-span-1 md:aspect-[4/3]" loading="lazy" />
 	</div>
 	<div class="px-6 py-14">
 		<div class="mx-auto max-w-4xl">
@@ -308,7 +308,7 @@
 			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Application process</p>
 			<h2 class="mb-10 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">How it works</h2>
 		</div>
-		<div class="max-w-2xl">
+		<div class="max-w-3xl">
 			{#each steps as step, i (step.n)}
 				<div use:inView={{ delay: i * 80 }} class="flex gap-5 border-b border-slate-100 py-6 last:border-0">
 					<div
@@ -331,7 +331,7 @@
 <div class="h-px bg-slate-200"></div>
 
 <section class="bg-slate-50">
-	<div class="grid grid-cols-4 gap-px bg-slate-200">
+	<div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-4">
 		<img src={delavnice} alt="Workshops and events" class="aspect-[4/3] w-full object-cover" loading="lazy" />
 		<img src={shapeTalk} alt="Shape Talk event" class="aspect-[4/3] w-full object-cover" loading="lazy" />
 		<img src={poletna} alt="Shapers summer school" class="aspect-[4/3] w-full object-cover" loading="lazy" />
@@ -342,11 +342,11 @@
 			<div use:inView>
 				<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Community support</p>
 				<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">You won't be navigating this alone</h2>
-				<p class="mt-3 mb-3 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
+				<p class="mt-3 mb-3 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 					Most international programs drop you in a new country and leave you to navigate bureaucracy,
 					logistics, and housing on your own. Not this one.
 				</p>
-				<p class="mb-8 max-w-2xl text-[0.9375rem] leading-relaxed text-slate-600">
+				<p class="mb-8 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 					When you get selected, <span class="font-medium text-slate-800">Global Shapers Ljubljana</span>
 					— part of the World Economic Forum's global network of young leaders — steps in as your
 					immediate local community.
@@ -392,6 +392,7 @@
 		</div>
 		<div use:inView={{ delay: 120 }} class="shrink-0">
 			<a
+				// eslint-disable-next-line svelte/no-navigation-without-resolve
 				href={WEBINAR_URL}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -442,6 +443,7 @@
 		</h2>
 		<p class="mb-9 text-[0.9375rem] text-blue-300">Applications close May 20, 2026.</p>
 		<a
+			// eslint-disable-next-line svelte/no-navigation-without-resolve
 			href={FORM_URL}
 			target="_blank"
 			rel="noopener noreferrer"
@@ -463,6 +465,7 @@
 
 <div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-100 bg-white px-4 py-3 shadow-lg shadow-black/5 sm:hidden">
 	<a
+		// eslint-disable-next-line svelte/no-navigation-without-resolve
 		href={FORM_URL}
 		target="_blank"
 		rel="noopener noreferrer"
