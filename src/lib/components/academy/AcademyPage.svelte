@@ -8,11 +8,63 @@
 	import gas252 from '$lib/assets/gas252.webp';
 	import poletna from '$lib/assets/poletna_sola.webp';
 	import delavnice from '$lib/assets/delavnice_dogodki.webp';
+	import webinar from '$lib/assets/webinar.png';
 	import shapeTalk from '$lib/assets/shape_talk.webp';
-	import { FORM_URL, WEBINAR_URL } from '$lib/constants';
+	import globe from '$lib/assets/globe.png';
+	import ursa from '$lib/assets/ursa-kamenik.jpg'
+
+	import akrapovic from '$lib/assets/logos/akrapovic-logo.png';
+	import eye from '$lib/assets/logos/eye-logo.png';
+	import gatom from '$lib/assets/logos/gatom-logo.png';
+	import imactHub from '$lib/assets/logos/imact-hub-logo.png';
+	import popri from '$lib/assets/logos/popri-logo.png';
+	import preskok from '$lib/assets/logos/preskok-logo.svg';
+	import tplj from '$lib/assets/logos/tplj-logo.png';
+	import wef from '$lib/assets/logos/wef-logo.png';
+	import xod from '$lib/assets/logos/xod-logo.webp';
+
+	const logos = [akrapovic, eye, gatom, imactHub, popri, preskok, tplj, wef, xod];
+	import { FORM_URL, WEBINAR_URL, WHATSAPP_URL, ACADEMY_DEADLINE, WEBINAR_DATES } from '$lib/constants';
+
+	let heroCta: HTMLAnchorElement;
+	let heroCtaVisible = $state(true);
+
+	$effect(() => {
+		const obs = new IntersectionObserver(([e]) => { heroCtaVisible = e.isIntersecting; });
+		obs.observe(heroCta);
+		return () => obs.disconnect();
+	});
 
 	let openFaq = $state<number | null>(null);
 	const toggleFaq = (i: number) => (openFaq = openFaq === i ? null : i);
+
+	let now = $state(new Date());
+	$effect(() => {
+		const id = setInterval(() => { now = new Date(); }, 1000);
+		return () => clearInterval(id);
+	});
+
+	function pad(n: number) { return String(n).padStart(2, '0'); }
+
+	function getTimeLeft(target: Date) {
+		const diff = target.getTime() - now.getTime();
+		if (diff <= 0) return null;
+		const days = Math.floor(diff / 86400000);
+		const hours = Math.floor((diff % 86400000) / 3600000);
+		const minutes = Math.floor((diff % 3600000) / 60000);
+		const seconds = Math.floor((diff % 60000) / 1000);
+		return { days, hours, minutes, seconds };
+	}
+
+	const timeLeft = $derived(getTimeLeft(ACADEMY_DEADLINE));
+	const nextWebinar = $derived(WEBINAR_DATES.find(d => d > now) ?? null);
+
+	function formatWebinarDate(d: Date): string {
+		if (d === nextWebinar) {
+			return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+		}
+		return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+	}
 
 	const willItems = [
 		'Solve real marketing and sales problems for companies entering new markets',
@@ -25,17 +77,11 @@
 		'Be stuck doing mindless data entry without seeing the big picture'
 	];
 
-	const stats = [
-		{ value: '12', label: 'fully funded scholarships' },
-		{ value: '6 months', label: 'paid internship abroad' },
-		{ value: '800€ – 1050€', label: 'monthly support' }
-	];
-
 	const specs = [
 		{ label: 'Location', value: 'Ljubljana, Slovenia' },
 		{ label: 'Academy sprint', value: 'Jul 1 – Aug 1, 2026\n4 weeks, on-site' },
 		{ label: 'Internship', value: 'Jul 1 – Jan 31, 2027\non-site' },
-		{ label: 'Who can apply', value: 'EU, UK, USA, Canada, Singapore\nAges 18–30' },
+		{ label: 'Who can apply', value: 'EU, UK, USA, Canada\nAges 18–30' },
 	];
 
 	const steps = [
@@ -139,34 +185,41 @@
 	/>
 </svelte:head>
 
-<section class="bg-[linear-gradient(to_bottom,#dbeafe_0%,#eff6ff_40%,#fff_100%)] px-6 pb-20 pt-28 text-center md:pt-32">
-	<div class="hero-in mx-auto max-w-3xl">
+<section class="bg-[linear-gradient(to_bottom,#dbeafe_0%,#eff6ff_40%,#fff_100%)] flex min-h-screen flex-col px-6 pt-28 text-center md:pt-32">
+	<div class="hero-in mx-auto flex w-full max-w-3xl flex-1 flex-col">
+		<div>
+			<h1 class="mb-5 text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--gs-primary)] md:text-[2.75rem]">
+				Shapers Academy – International career accelerator for the <span class="text-[var(--gs-accent)]">top 1%</span>
+			</h1>
 
-		<h1 class="mb-5 text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--gs-primary)] md:text-[2.75rem]">
-			Shapers Academy – International career accelerator for the <span class="text-[var(--gs-accent)]">top 1%</span>
-		</h1>
+			<p class="mx-auto mb-8 max-w-2xl text-lg text-[var(--gs-primary)]">
+				Shapers Academy is a 6-month paid internship abroad where you fast-track your career. No fluff, just real business challenges.
+			</p>
 
-		<p class="mx-auto mb-4 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
-			The program consists of an in-person 4-week skill sprint in marketing, sales, and business strategy, led by a high-level industry expert, paired alongside a paid 6-month internship abroad at a company where you can fast-track your career.
-		</p>
-		<p class="mx-auto mb-4 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
-			No unnecessary lectures and no fluff. With our industry expert guiding you from day one, you
-			step into a real business, tackle live company challenges, and hardwire your skills through actual execution.
-		</p>
-		<p class="mx-auto mb-6 max-w-xl text-[0.9375rem] font-medium text-[var(--gs-primary)]">
-			Shapers Academy is not only here to help you develop and fast-track your career. It's here to help you shape it.
-		</p>
+			<div class="logo-carousel-mask my-10 overflow-hidden" role="region">
+				<div class="carousel-track flex w-max items-center gap-16">
+					{#each [...logos, ...logos] as logo, i (i)}
+						<img src={logo} alt="Partner company" class="h-7 w-auto max-w-[100px] object-contain opacity-70 grayscale" />
+					{/each}
+				</div>
+			</div>
 
-		<a
-			// eslint-disable-next-line svelte/no-navigation-without-resolve
-			href={FORM_URL}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="inline-block rounded-lg bg-[var(--gs-accent)] px-9 py-[13px] text-[0.9375rem] font-semibold text-white no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,99,235,0.45)]"
-		>
-			Apply for a scholarship →
-		</a>
-		<p class="mt-4 text-sm text-slate-500">12 spots available · Applications close May 20, 2026</p>
+			<a
+				bind:this={heroCta}
+				// eslint-disable-next-line svelte/no-navigation-without-resolve
+				href={FORM_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-block rounded-lg bg-[var(--gs-accent)] px-9 py-[13px] text-[0.9375rem] font-semibold text-white no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,99,235,0.45)]"
+			>
+				Apply for a scholarship →
+			</a>
+			<p class="mt-4 mb-8 text-sm text-slate-500">12 spots available · Applications close May 20, 2026</p>
+		</div>
+
+		<div class="mt-auto flex justify-center">
+			<img src={globe} alt="Global reach" class="w-full max-w-xxl drop-shadow-xl" />
+		</div>
 	</div>
 </section>
 
@@ -184,10 +237,10 @@
 
 		<div class="mt-8 grid gap-4 md:grid-cols-2">
 			<div use:inView={{ delay: 0 }}>
-				<div class="h-full rounded-xl border border-green-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-					<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-green-700">You will</p>
+				<div class="h-full rounded-xl border border-green-200 bg-[#f5fef8] p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+					<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-green-600">You will</p>
 					{#each willItems as item (item)}
-						<div class="flex gap-3 py-3 last:border-0 last:pb-0">
+						<div class="flex gap-3 py-3 last:pb-0">
 							<span class="mt-0.5 shrink-0 text-sm text-green-500">✓</span>
 							<p class="text-[0.8125rem] leading-relaxed text-slate-700">{item}</p>
 						</div>
@@ -195,11 +248,11 @@
 				</div>
 			</div>
 			<div use:inView={{ delay: 100 }}>
-				<div class="h-full rounded-xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-					<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">You won't</p>
+				<div class="h-full rounded-xl border border-red-100 bg-white p-6">
+					<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-red-400">You won't</p>
 					{#each wontItems as item (item)}
 						<div class="flex gap-3 py-3 last:border-0 last:pb-0">
-							<span class="mt-0.5 shrink-0 text-sm text-slate-300">✕</span>
+							<span class="mt-0.5 shrink-0 text-sm text-red-400">✕</span>
 							<p class="text-[0.8125rem] leading-relaxed text-slate-500">{item}</p>
 						</div>
 					{/each}
@@ -215,63 +268,71 @@
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
 			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Overview</p>
-			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Programme at a glance</h2>
-			<p class="mt-3 mb-10 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
-				Only 12 scholarships are available. Why 12? Because we're only looking for the top 1% of applicants.
-				<br>
-				During your internship, you'll receive a monthly stipend designed to fully cover your living expenses in Ljubljana, allowing you to focus entirely on gaining experience and accelerating your career.
-			</p>
+			<h2 class="mb-8 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Programme at a glance</h2>
 		</div>
-		<div class="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-			{#each stats as stat, i (stat.value)}
-				<div
-					use:inView={{ delay: i * 80 }}
-					class="rounded-xl border border-blue-100 bg-blue-50 px-6 py-8 text-center"
-				>
-					<p class="text-3xl font-bold tracking-tight text-[var(--gs-primary)]">{stat.value}</p>
-					<p class="mt-2 text-xs font-medium text-slate-500">{stat.label}</p>
+		<div use:inView={{ delay: 80 }} class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
+			<div class="flex flex-col md:flex-row">
+				<div class="shrink-0 md:w-96">
+					<img src={ursa} alt="Urša Kamenik" class="h-64 w-full object-cover object-top md:h-full" />
 				</div>
-			{/each}
+				<div class="flex flex-1 flex-col justify-between p-8">
+					<div>
+						<p class="mb-6 text-[0.9375rem] leading-relaxed text-slate-600">
+							A fully funded scholarship combining a 4-week intensive skill sprint with a 6-month paid internship in Ljubljana. You'll work on real marketing, sales, and business development challenges at a partner company. Only 12 scholarships are awarded, going to the top 1% of applicants.
+						</p>
+						<dl class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+							{#each specs as spec (spec.label)}
+								<div>
+									<dt class="text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-400">{spec.label}</dt>
+									<dd class="mt-0.5 whitespace-pre-line text-sm font-medium text-[var(--gs-primary)]">{spec.value}</dd>
+								</div>
+							{/each}
+						</dl>
+					</div>
+					<div class="mt-6 border-t border-slate-100 pt-5">
+						<p class="mb-3 text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-400">Applications close in</p>
+						{#if timeLeft}
+							<div class="flex gap-5">
+								{#each [{ v: timeLeft.days, l: 'days' }, { v: timeLeft.hours, l: 'hrs' }, { v: timeLeft.minutes, l: 'min' }, { v: timeLeft.seconds, l: 'sec' }] as unit (unit.l)}
+									<div class="text-center">
+										<p class="text-2xl font-bold tabular-nums text-[var(--gs-primary)]">{pad(unit.v)}</p>
+										<p class="text-[0.625rem] font-semibold uppercase tracking-wide text-slate-400">{unit.l}</p>
+									</div>
+								{/each}
+							</div>
+						{:else}
+							<p class="text-sm font-semibold text-red-500">Applications closed</p>
+						{/if}
+					</div>
+				</div>
+			</div>
 		</div>
-
-		<dl class="grid gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
-			{#each specs as spec, i (spec.label)}
-				<div use:inView={{ delay: 240 + i * 50 }}>
-					<dt class="text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
-						{spec.label}
-					</dt>
-					<dd class="mt-1 whitespace-pre-line text-sm font-medium text-[var(--gs-primary)]">{spec.value}</dd>
-				</div>
-			{/each}
-		</dl>
 	</div>
 </section>
 
 <div class="h-px bg-slate-200"></div>
 
 <section class="bg-slate-50">
-	<div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-3">
-		<img src={oldTown} alt="Ljubljana old town" class="aspect-[4/3] w-full object-cover" loading="lazy" />
-		<img src={gas25} alt="Shapers program in Ljubljana" class="aspect-[4/3] w-full object-cover" loading="lazy" />
-		<img src={gas252} alt="Global Shapers Ljubljana" class="col-span-2 aspect-[2/1] w-full object-cover md:col-span-1 md:aspect-[4/3]" loading="lazy" />
-	</div>
 	<div class="px-6 py-14">
 		<div class="mx-auto max-w-4xl">
 			<div use:inView>
 				<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Your base</p>
 				<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Ljubljana, Slovenia</h2>
 				<p class="mt-3 mb-7 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
-					Slovenia's capital sits at the centre of Europe, 2 hours from Vienna, Venice, and Zagreb.
-					Compact, walkable, and cosmopolitan, with a vibrant young professional scene and a cost of
-					living that lets your stipend go further.
+					Slovenia's capital is one of Europe's best-kept secrets. Safe, beautiful, and packed with opportunity, Ljubljana is compact and walkable with a thriving young professional scene. Just a 2-hour drive from Vienna, Venice, and Zagreb, it sits at the very heart of the continent. Slovenia ranks among the world's 10 safest countries, making it the ideal launchpad for your international career.
 				</p>
 				<div class="flex flex-wrap gap-2">
-					{#each ['✈ 2h from Vienna & Venice', '☀ 300 days of sun / year', '⌂ Rent 300€ – 500€/mo', '⊙ Tight expat community'] as tag (tag)}
+					{#each ['2h drive from Vienna, Venice & Zagreb', '300 sunny days / year', 'Top 10 safest countries in the world', 'Thriving expat community'] as tag (tag)}
 						<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-[13px] py-1 text-xs font-medium text-blue-800">{tag}</span>
 					{/each}
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-3">
+		<img src={oldTown} alt="Ljubljana old town" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+		<img src={gas25} alt="Shapers program in Ljubljana" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+		<img src={gas252} alt="Global Shapers Ljubljana" class="col-span-2 aspect-[2/1] w-full object-cover md:col-span-1 md:aspect-[4/3]" loading="lazy" />
 	</div>
 </section>
 
@@ -285,12 +346,19 @@
 		</div>
 		<div class="max-w-3xl">
 			{#each steps as step, i (step.n)}
-				<div use:inView={{ delay: i * 80 }} class="flex gap-5 border-b border-slate-100 py-6 last:border-0">
-					<div
-						class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[0.8125rem] font-semibold text-white {step.final ? 'bg-[var(--gs-primary)]' : 'bg-[var(--gs-accent)]'}"
-					>
-						{step.n}
-					</div>
+				<div use:inView={{ delay: i * 80 }} class="flex gap-5 py-6">
+					{#if step.final}
+						<div class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-base font-bold text-white shadow-[0_0_20px_rgba(30,64,175,0.55)]">
+							{step.n}
+						</div>
+					{:else}
+						<div
+							class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[0.8125rem] font-semibold text-white"
+							style="background-color: {['#93c5fd','#60a5fa','#3b82f6'][i]}"
+						>
+							{step.n}
+						</div>
+					{/if}
 					<div>
 						<p class="mb-1.5 text-sm font-semibold text-[var(--gs-primary)]">
 							{step.title}
@@ -343,33 +411,37 @@
 
 <div class="h-px bg-slate-200"></div>
 
-<section class="bg-[var(--gs-primary)] px-6 py-14">
-	<div class="mx-auto flex max-w-4xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
-		<div use:inView>
-			<p class="mb-1.5 text-[0.6875rem] font-semibold uppercase tracking-widest text-blue-200">
-				Free info session
-			</p>
-			<h2 class="mb-3 text-xl font-semibold text-white">Still on the fence?</h2>
-			<p class="max-w-lg text-[0.9375rem] leading-relaxed text-blue-200">
-				Join our free live webinar where we walk through the full programme, answer every question
-				you have, and help you figure out if Shapers Academy is the right move for you.
-			</p>
-			<div class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[0.8125rem] text-blue-300">
-				<span>Tuesday, 13 May 2026</span>
-				<span>18:00 CET</span>
-				<span>Online · 45 min</span>
+<section class="bg-[var(--gs-primary)] px-6 py-6">
+	<div class="mx-auto max-w-4xl">
+		<div class="flex flex-col gap-8 md:flex-row md:items-center">
+
+			<div class="flex-1" use:inView>
+				<p class="mb-1.5 text-[0.6875rem] font-semibold uppercase tracking-widest text-blue-200">
+					Free info session
+				</p>
+				<h2 class="mb-3 text-xl font-semibold text-white">Still on the fence?</h2>
+				<p class="max-w-lg text-[0.9375rem] leading-relaxed text-blue-200">
+					Join our free live webinar where we walk through the full programme, answer every question
+					you have, and help you figure out if Shapers Academy is the right move for you.
+				</p>
+				{#if nextWebinar}
+					<div class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[0.8125rem] text-blue-300">
+						<span>{formatWebinarDate(nextWebinar)}</span>
+					</div>
+				{/if}
+				<a
+					// eslint-disable-next-line svelte/no-navigation-without-resolve
+					href={WEBINAR_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-block whitespace-nowrap rounded-lg border border-white-200 px-7 py-3 mt-6 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+				>
+					Reserve your spot →
+				</a>
 			</div>
-		</div>
-		<div use:inView={{ delay: 120 }} class="shrink-0">
-			<a
-				// eslint-disable-next-line svelte/no-navigation-without-resolve
-				href={WEBINAR_URL}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="inline-block whitespace-nowrap rounded-lg border border-blue-500 px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
-			>
-				Reserve your spot →
-			</a>
+			<div class="shrink-0 md:w-80">
+				<img src={webinar} alt="Live webinar" class="h-full min-h-[220px] w-full rounded-md object-cover" loading="lazy" />
+			</div>
 		</div>
 	</div>
 </section>
@@ -405,34 +477,67 @@
 
 <div class="h-px bg-slate-200"></div>
 
-<section class="bg-[var(--gs-primary)] px-6 pt-24 pb-16 text-center">
-	<div use:inView class="mx-auto max-w-lg">
-		<h2 class="mb-3 text-3xl font-semibold tracking-tight text-white">
-			12 spots. One shot at the top 1%.
-		</h2>
-		<p class="mb-9 text-[0.9375rem] text-blue-300">Applications close May 20, 2026.</p>
-		<a
-			// eslint-disable-next-line svelte/no-navigation-without-resolve
-			href={FORM_URL}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="inline-block rounded-lg bg-white px-9 py-3.5 text-[0.9375rem] font-semibold text-blue-900 transition-opacity hover:opacity-90"
-		>
-			Apply for scholarship →
-		</a>
-		<p class="mt-7 text-sm text-white">
-			Questions?
+<section class="bg-[var(--gs-primary)] px-6 pt-20 pb-16">
+	<div use:inView class="mx-auto max-w-4xl">
+		<div class="mb-12 text-center">
+			<h2 class="mb-3 text-3xl font-semibold tracking-tight text-white">
+				12 spots. One shot at the top 1%.
+			</h2>
+			<p class="mb-6 text-[0.9375rem] text-blue-300">Applications close May 20, 2026.</p>
+
+			{#if timeLeft}
+				<div class="mb-8 flex justify-center gap-6">
+					{#each [{ v: timeLeft.days, l: 'days' }, { v: timeLeft.hours, l: 'hrs' }, { v: timeLeft.minutes, l: 'min' }, { v: timeLeft.seconds, l: 'sec' }] as unit (unit.l)}
+						<div class="text-center">
+							<p class="text-3xl font-bold tabular-nums text-white">{pad(unit.v)}</p>
+							<p class="text-[0.6875rem] font-semibold uppercase tracking-wide text-blue-400">{unit.l}</p>
+						</div>
+					{/each}
+				</div>
+			{/if}
+
 			<a
-				href="mailto:globalshapersljubljana@gmail.com"
-				class="text-blue-300 underline underline-offset-2"
+				// eslint-disable-next-line svelte/no-navigation-without-resolve
+				href={FORM_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-block rounded-lg bg-white px-9 py-3.5 text-[0.9375rem] font-semibold text-blue-900 transition-opacity hover:opacity-90"
 			>
-				globalshapersljubljana@gmail.com
+				Apply for scholarship →
 			</a>
-		</p>
+		</div>
+
+		<div class="grid grid-cols-1 gap-8 pt-10 sm:grid-cols-2">
+			<div>
+				<p class="mb-2 text-[0.6875rem] font-semibold uppercase tracking-widest text-blue-400">Get in touch</p>
+				<p class="mb-4 text-sm leading-relaxed text-blue-200">Questions about the program? Reach out directly to our team.</p>
+				<a
+					href="mailto:globalshapersljubljana@gmail.com"
+					class="text-sm text-white underline underline-offset-2 hover:text-blue-200"
+				>
+					globalshapersljubljana@gmail.com
+				</a>
+			</div>
+			<div>
+				<p class="mb-2 text-[0.6875rem] font-semibold uppercase tracking-widest text-blue-400">Stay updated</p>
+				<p class="mb-4 text-sm leading-relaxed text-blue-200">Join our WhatsApp channel for the latest news and updates.</p>
+				<a
+					href={WHATSAPP_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-block rounded-lg border border-white-200 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+				>
+					Join WhatsApp channel →
+				</a>
+			</div>
+		</div>
 	</div>
 </section>
 
-<div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-100 bg-white px-4 py-3 shadow-lg shadow-black/5 sm:hidden">
+<div
+	class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-100 bg-white px-4 py-3 shadow-lg shadow-black/5 sm:hidden"
+	style="transition: transform 500ms ease-in-out, opacity 500ms ease-in-out; transform: {heroCtaVisible ? 'translateY(100%)' : 'translateY(0)'}; opacity: {heroCtaVisible ? '0' : '1'};"
+>
 	<a
 		// eslint-disable-next-line svelte/no-navigation-without-resolve
 		href={FORM_URL}
@@ -443,3 +548,24 @@
 		Apply now
 	</a>
 </div>
+
+<style>
+	.logo-carousel-mask {
+		-webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+		mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+	}
+
+	@keyframes carousel-scroll {
+		from { transform: translateX(0); }
+		to { transform: translateX(-50%); }
+	}
+
+	.carousel-track {
+		animation: carousel-scroll 30s linear infinite;
+	}
+
+	.logo-carousel-mask:hover .carousel-track {
+		animation-play-state: paused;
+	}
+
+</style>
