@@ -202,7 +202,7 @@
 	<div class="hero-in mx-auto flex w-full max-w-3xl flex-1 flex-col">
 		<div>
 			<h1 class="mb-5 text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--gs-primary)] md:text-[2.75rem]">
-				Shapers Academy – International career accelerator for the <span class="text-[var(--gs-accent)]">top 1%</span>
+				International career accelerator for the <span class="text-[var(--gs-accent)]">top 1%</span>
 			</h1>
 
 			<p class="mx-auto mb-8 max-w-2xl text-lg text-[var(--gs-primary)]">
