@@ -250,7 +250,7 @@
 
 		<div class="mt-8 grid gap-4 md:grid-cols-2">
 			<div use:inView={{ delay: 0 }}>
-				<div class="h-full rounded-xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background:var(--gs-positive-bg); border:1px solid var(--gs-positive-border)">
+				<div class="h-full rounded-xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background:var(--gs-accent); border:1px solid var(--gs-positive-border)">
 					<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-white" >You will</p>
 					{#each willItems as item (item)}
 						<div class="flex gap-3 py-3 last:pb-0">
