@@ -388,7 +388,14 @@
 	<div class="mx-auto max-w-4xl" use:inView>
 		<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">Beyond Ljubljana</p>
 		<h2 class="mb-6 text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">Your Backyard</h2>
-		<p class="text-[0.9375rem] leading-relaxed text-slate-600">Most capitals make you choose. City life or nature. Ljubljana gives you both. An hour in any direction and you're somewhere completely different. Bled's lake. Pokljuka's forests. The Adriatic in Portorož. Alpine caves. Wine hills. Ljubljana just happens to sit in the middle of all of it.</p>
+		<p class="text-[0.9375rem] leading-relaxed text-slate-600">
+			Most capitals make you choose. City life or nature. Ljubljana gives you both. An hour in any direction and you're somewhere completely different. Bled's lake. Pokljuka's forests. The Adriatic in Portorož. Alpine caves. Wine hills. Ljubljana just happens to sit in the middle of all of it. Small enough to bike across, big enough to never get bored.
+		</p>
+		<div class="mt-6 flex flex-wrap gap-2">
+			{#each ['Bled in 45 min', 'Alps on your doorstep', 'Adriatic coast in 1h','4 countries within 2h'] as tag (tag)}
+				<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-3.25 py-1 text-xs font-medium text-blue-800">{tag}</span>
+			{/each}
+		</div>
 	</div>
 </section>
 <div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-3">
