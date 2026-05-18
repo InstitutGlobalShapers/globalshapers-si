@@ -13,6 +13,9 @@
 	import shapeTalk from '$lib/assets/shape_talk.webp';
 	import globe from '$lib/assets/globe.png';
 	import ursa from '$lib/assets/ursa-kamenik.jpg'
+	import bled from '$lib/assets/bled.webp';
+	import portoroz from '$lib/assets/portoroz.webp';
+	import zajamniki from '$lib/assets/zajamniki.webp';
 
 	import akrapovic from '$lib/assets/logos/akrapovic-logo.png';
 	import eye from '$lib/assets/logos/eye-logo.png';
@@ -90,8 +93,8 @@
 
 	const specs = [
 		{ label: 'Location', value: 'Ljubljana, Slovenia' },
-		{ label: 'Academy sprint', value: 'Jul 1 – Aug 1, 2026\n4 weeks, on-site' },
-		{ label: 'Internship', value: 'Jul 1 – Jan 31, 2027\non-site' },
+		{ label: 'Academy sprint', value: 'Aug 1 – Sep 1, 2026\n4 weeks, on-site' },
+		{ label: 'Internship', value: 'Aug 1 – Jan 31, 2027\non-site' },
 		{ label: 'Who can apply', value: 'EU, UK, USA, Canada, Singapore\nAges 18–30' },
 	];
 
@@ -378,6 +381,21 @@
 		<img src={ljCenter} alt="Aleja street" class="col-span-2 aspect-[2/1] w-full object-cover md:col-span-1 md:aspect-[4/3]" loading="lazy" />
 	</div>
 </section>
+
+<div class="h-px bg-slate-200"></div>
+
+<section class="px-6 py-20">
+	<div class="mx-auto max-w-4xl" use:inView>
+		<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">Beyond Ljubljana</p>
+		<h2 class="mb-6 text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">Your Backyard</h2>
+		<p class="text-[0.9375rem] leading-relaxed text-slate-600">Most capitals make you choose. City life or nature. Ljubljana gives you both. An hour in any direction and you're somewhere completely different. Bled's lake. Pokljuka's forests. The Adriatic in Portorož. Alpine caves. Wine hills. Ljubljana just happens to sit in the middle of all of it.</p>
+	</div>
+</section>
+<div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-3">
+	<img src={bled} alt="Bled" class="aspect-4/3 w-full object-cover" loading="lazy" />
+	<img src={portoroz} alt="Portorož" class="aspect-4/3 w-full object-cover" loading="lazy" />
+	<img src={zajamniki} alt="Zajamniki" class="col-span-2 aspect-2/1 w-full object-cover md:col-span-1 md:aspect-4/3" loading="lazy" />
+</div>
 
 <div class="h-px bg-slate-200"></div>
 
