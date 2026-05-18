@@ -199,15 +199,15 @@
 <section class="bg-[linear-gradient(to_bottom,#dbeafe_0%,#eff6ff_40%,#fff_100%)] flex min-h-screen flex-col px-6 pt-28 text-center md:pt-32">
 	<div class="hero-in mx-auto flex w-full max-w-3xl flex-1 flex-col">
 		<div>
-			<h1 class="mb-5 text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--gs-primary)] md:text-[2.75rem]">
+			<h1 class="mb-10 text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--gs-primary)] md:text-[2.75rem]">
 				International career accelerator for the <span class="text-[var(--gs-accent)] drop-shadow-[0_0_10px_color-mix(in_srgb,var(--gs-accent)_50%,transparent)]">top 1%</span>
 			</h1>
 
-			<p class="mx-auto mb-8 max-w-2xl text-lg text-[var(--gs-primary)]">
+			<p class="mx-auto mb-10 max-w-2xl text-lg text-[var(--gs-primary)]">
 				Shapers Academy is a 6-month paid internship abroad where you fast-track your career. No fluff, just real business challenges.
 			</p>
 
-			<div class="logo-carousel-mask my-10 overflow-hidden" role="region">
+			<div class="logo-carousel-mask my-12 overflow-hidden" role="region">
 				<div class="carousel-track flex w-max items-center gap-16">
 					{#each [...logos, ...logos] as logo, i (i)}
 						<img src={logo} alt="Partner company" class="h-7 w-auto max-w-[100px] object-contain opacity-70 grayscale" />
@@ -225,7 +225,7 @@
 			>
 				Claim your spot
 			</a>
-			<p class="mt-4 mb-8 text-sm text-slate-500">12 spots available · Applications close {ACADEMY_DEADLINE.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+			<p class="mt-6 mb-8 text-sm text-slate-500">Only 12 spots available · Applications close {ACADEMY_DEADLINE.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
 		</div>
 
 		<div class="mt-auto flex justify-center">
