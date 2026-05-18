@@ -204,7 +204,7 @@
 			</h1>
 
 			<p class="mx-auto mb-10 max-w-2xl text-lg text-[var(--gs-primary)]">
-				Shapers Academy is a 6-month paid internship abroad where you fast-track your career. No fluff, just real business challenges.
+				Shapers Academy is a <strong>6-month paid internship abroad</strong> where you fast-track your career. No fluff, just real business challenges.
 			</p>
 
 			<div class="logo-carousel-mask my-12 overflow-hidden" role="region">
