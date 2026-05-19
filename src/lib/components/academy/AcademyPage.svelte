@@ -201,11 +201,11 @@
 <section class="bg-[linear-gradient(to_bottom,#dbeafe_0%,#eff6ff_40%,#fff_100%)] flex min-h-screen flex-col px-6 pt-28 text-center md:pt-32">
 	<div class="hero-in mx-auto flex w-full max-w-3xl flex-1 flex-col">
 		<div>
-			<h1 class="mb-10 text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--gs-primary)] md:text-[2.75rem]">
-				International career accelerator for the <span class="text-[var(--gs-accent)] drop-shadow-[0_0_10px_color-mix(in_srgb,var(--gs-accent)_50%,transparent)]">top 1%</span>
+			<h1 class="mb-10 text-4xl font-semibold leading-[1.15] tracking-tight text-(--gs-primary) md:text-[2.75rem]">
+				International career accelerator for the <span class="text-(--gs-accent) drop-shadow-[0_0_10px_color-mix(in_srgb,var(--gs-accent)_50%,transparent)]">top 1%</span>
 			</h1>
 
-			<p class="mx-auto mb-10 max-w-2xl text-lg text-[var(--gs-primary)]">
+			<p class="mx-auto mb-10 max-w-2xl text-lg text-(--gs-primary)">
 				Shapers Academy is a <strong>6-month paid internship abroad</strong> where you fast-track your career. No fluff, just real business challenges.
 			</p>
 
@@ -241,8 +241,8 @@
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">The offer</p>
-			<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Not your typical internship</h2>
+			<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">The offer</p>
+			<h2 class="text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">Not your typical internship</h2>
 			<p class="mt-2 mb-8 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 				Shapers Academy is designed to allow selected participants to completely bypass the entry-level struggle or in some cases, completely switch career paths.
 			</p>
@@ -281,8 +281,8 @@
 	<div class="mx-auto max-w-4xl">
 		<div class="mb-10 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
 			<div use:inView>
-				<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Overview</p>
-				<h2 class="mb-4 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Programme at a glance</h2>
+				<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">Overview</p>
+				<h2 class="mb-4 text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">Programme at a glance</h2>
 				<p class="max-w-2xl text-[0.9375rem] leading-relaxed text-slate-500">
 					A fully funded scholarship combining a 4-week intensive skill sprint with a 6-month paid internship in Ljubljana. You'll work on real marketing, sales, and business development challenges at a partner company. Only 12 scholarships are awarded, going to the top 1% of applicants.
 				</p>
@@ -294,7 +294,7 @@
 					<div class="flex gap-6">
 						{#each [{ v: timeLeft.days, l: 'days' }, { v: timeLeft.hours, l: 'hrs' }, { v: timeLeft.minutes, l: 'min' }, { v: timeLeft.seconds, l: 'sec' }] as unit (unit.l)}
 							<div>
-								<p class="text-xl font-bold tabular-nums text-[var(--gs-accent)]">{pad(unit.v)}</p>
+								<p class="text-xl font-bold tabular-nums text-(--gs-accent)">{pad(unit.v)}</p>
 								<p class="text-[0.6rem] font-semibold uppercase tracking-widest text-slate-400">{unit.l}</p>
 							</div>
 						{/each}
@@ -309,7 +309,7 @@
 			{#each specs as spec (spec.label)}
 				<div class="bg-white px-6 py-7 transition-colors duration-200 hover:bg-blue-50/60">
 					<p class="mb-2 text-[0.6rem] font-semibold uppercase tracking-widest text-slate-400">{spec.label}</p>
-					<p class="whitespace-pre-line text-sm font-semibold leading-snug text-[var(--gs-primary)]">{spec.value}</p>
+					<p class="whitespace-pre-line text-sm font-semibold leading-snug text-(--gs-primary)">{spec.value}</p>
 				</div>
 			{/each}
 		</div>
@@ -321,10 +321,10 @@
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">
+			<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">
 				This year's expert
 			</p>
-			<h2 class="mb-8 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Meet Urša Kamenik</h2>
+			<h2 class="mb-8 text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">Meet Urša Kamenik</h2>
 		</div>
 		<div use:inView={{ delay: 80 }} class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
 			<div class="flex flex-col md:flex-row">
@@ -333,7 +333,7 @@
 				</div>
 				<div bind:this={ursakSection} class="flex flex-1 flex-col justify-between p-8" class:hl-active={ursakVisible}>
 					<div>
-						<p class="mb-0.5 text-lg font-semibold text-[var(--gs-primary)]">Urša Kamenik</p>
+						<p class="mb-0.5 text-lg font-semibold text-(--gs-primary)">Urša Kamenik</p>
 						<p class="mb-5 text-sm font-medium text-slate-400">Business Consultant & Mentor · Head of Sales, Erudio Group</p>
 						<p class="mb-6 text-[0.9375rem] leading-relaxed text-slate-600">
 							Urša is a <span class="hl hl-0">multi-time founder</span>, a master strategist in <span class="hl hl-1">business development</span> and <span class="hl hl-2">market expansion</span>, leading initiatives to propel businesses into new markets and optimize their operational frameworks.
@@ -349,7 +349,7 @@
 						<p class="mb-3 text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-400">Expertise</p>
 						<div class="flex flex-wrap gap-2">
 							{#each ['Business development', 'Market expansion', 'Strategic consulting', 'Sales strategy', 'Market analysis', 'Team leadership', 'Event management'] as tag (tag)}
-								<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-blue-50 px-[10px] py-0.5 text-xs font-medium text-blue-800">{tag}</span>
+								<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-800">{tag}</span>
 							{/each}
 						</div>
 					</div>
@@ -365,23 +365,23 @@
 	<div class="px-6 py-14">
 		<div class="mx-auto max-w-4xl">
 			<div use:inView>
-				<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Your base</p>
-				<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Ljubljana, Slovenia</h2>
+				<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">Your base</p>
+				<h2 class="text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">Ljubljana, Slovenia</h2>
 				<p class="mt-3 mb-7 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 					Slovenia's capital is one of Europe's best-kept secrets. Safe, beautiful, and packed with opportunity, Ljubljana is compact and walkable with a thriving young professional scene. Just a 2-hour drive from Vienna, Venice, and Zagreb, it sits at the very heart of the continent. Slovenia ranks among the world's 10 safest countries, making it the ideal launchpad for your international career.
 				</p>
 				<div class="flex flex-wrap gap-2">
 					{#each ['2h drive from Vienna, Venice & Zagreb', '300 sunny days / year', 'Top 10 safest countries in the world', 'Thriving expat community'] as tag (tag)}
-						<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-[13px] py-1 text-xs font-medium text-blue-800">{tag}</span>
+						<span class="inline-flex items-center rounded-full border-[0.5px] border-[#bfdbfe] bg-white px-3.25 py-1 text-xs font-medium text-blue-800">{tag}</span>
 					{/each}
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-3">
-		<img src={aleja} alt="Ljubljana center" class="aspect-[4/3] w-full object-cover" loading="lazy" />
-		<img src={ljCity} alt="Ljubljana city" class="aspect-[4/3] w-full object-cover" loading="lazy" />
-		<img src={ljCenter} alt="Aleja street" class="col-span-2 aspect-[2/1] w-full object-cover md:col-span-1 md:aspect-[4/3]" loading="lazy" />
+		<img src={aleja} alt="Ljubljana center" class="aspect-4/3 w-full object-cover" loading="lazy" />
+		<img src={ljCity} alt="Ljubljana city" class="aspect-4/3 w-full object-cover" loading="lazy" />
+		<img src={ljCenter} alt="Aleja street" class="col-span-2 aspect-2/1 w-full object-cover md:col-span-1 md:aspect-4/3" loading="lazy" />
 	</div>
 </section>
 
@@ -412,8 +412,8 @@
 <section class="px-6 py-20">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Application process</p>
-			<h2 class="mb-10 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">How it works</h2>
+			<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">Application process</p>
+			<h2 class="mb-10 text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">How it works</h2>
 		</div>
 		<div class="max-w-3xl">
 			{#each steps as step, i (step.n)}
@@ -425,7 +425,7 @@
 						{step.n}
 					</div>
 					<div>
-						<p class="mb-1.5 text-sm font-semibold text-[var(--gs-primary)]">
+						<p class="mb-1.5 text-sm font-semibold text-(--gs-primary)">
 							{step.title}
 						</p>
 						<p class="text-[0.8125rem] leading-relaxed text-slate-600">{step.body}</p>
@@ -440,15 +440,15 @@
 
 <section class="bg-slate-50">
 	<div class="grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-3">
-		<img src={delavnice} alt="Workshops and events" class="aspect-[4/3] w-full object-cover" loading="lazy" />
-		<img src={shapeTalk} alt="Shape Talk event" class="aspect-[4/3] w-full object-cover" loading="lazy" />
-		<img src={poletna} alt="Shapers summer school" class="col-span-2 aspect-[2/1] w-full object-cover md:col-span-1 md:aspect-[4/3]" loading="lazy" />
+		<img src={delavnice} alt="Workshops and events" class="aspect-4/3 w-full object-cover" loading="lazy" />
+		<img src={shapeTalk} alt="Shape Talk event" class="aspect-4/3 w-full object-cover" loading="lazy" />
+		<img src={poletna} alt="Shapers summer school" class="col-span-2 aspect-2/1 w-full object-cover md:col-span-1 md:aspect-4/3" loading="lazy" />
 	</div>
 	<div class="px-6 py-14">
 		<div class="mx-auto max-w-4xl">
 			<div use:inView>
-				<p class="mb-[10px] text-[11px] font-semibold uppercase tracking-[0.09em] text-[var(--gs-accent)]">Community support</p>
-				<h2 class="text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">You won't be navigating this alone</h2>
+				<p class="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-(--gs-accent)">Community support</p>
+				<h2 class="text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">You won't be navigating this alone</h2>
 				<p class="mt-3 mb-3 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600">
 					Most international programs drop you in a new country and leave you to navigate bureaucracy,
 					logistics, and housing on your own. Not this one.
@@ -463,7 +463,7 @@
 				{#each communityCards as card, i (card.title)}
 					<div use:inView={{ delay: i * 70 }}>
 						<div class="h-full rounded-xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-							<p class="mb-2 text-sm font-semibold text-[var(--gs-primary)]">{card.title}</p>
+							<p class="mb-2 text-sm font-semibold text-(--gs-primary)">{card.title}</p>
 							<p class="text-[0.8125rem] leading-relaxed text-slate-600">{card.body}</p>
 						</div>
 					</div>
@@ -475,7 +475,7 @@
 
 <div class="h-px bg-slate-200"></div>
 
-<section class="bg-[var(--gs-primary)] px-6 py-6">
+<section class="bg-(--gs-primary) px-6 py-6">
 	<div class="mx-auto max-w-4xl">
 		<div class="flex flex-col gap-8 md:flex-row md:items-center">
 
@@ -505,7 +505,7 @@
 			</div>
 			<!-- TODO: Replace with webinar.jpg once available -->
 			<div class="shrink-0 md:w-80">
-				<img src={webinar} alt="Live webinar" class="h-full min-h-[220px] w-full rounded-md object-cover" loading="lazy" />
+				<img src={webinar} alt="Live webinar" class="h-full min-h-55 w-full rounded-md object-cover" loading="lazy" />
 			</div>
 		</div>
 	</div>
@@ -514,7 +514,7 @@
 <section class="px-6 py-16">
 	<div class="mx-auto max-w-4xl">
 		<div use:inView>
-			<h2 class="mb-8 text-2xl font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--gs-primary)]">Frequently asked questions</h2>
+			<h2 class="mb-8 text-2xl font-semibold leading-tight tracking-[-0.01em] text-(--gs-primary)">Frequently asked questions</h2>
 		</div>
 		<div class="max-w-3xl">
 			{#each faqs as faq, i (faq.q)}
@@ -542,7 +542,7 @@
 
 <div class="h-px bg-slate-200"></div>
 
-<section class="bg-[var(--gs-primary)] px-6 pt-20 pb-16">
+<section class="bg-(--gs-primary) px-6 pt-20 pb-16">
 	<div use:inView class="mx-auto max-w-4xl">
 		<div class="mb-12 text-center">
 			<h2 class="mb-3 text-3xl font-semibold tracking-tight text-white">
@@ -587,6 +587,7 @@
 				<p class="mb-2 text-[0.6875rem] font-semibold uppercase tracking-widest text-blue-400">Stay updated</p>
 				<p class="mb-4 text-sm leading-relaxed text-blue-200">Join our WhatsApp channel for the latest news and updates.</p>
 				<a
+					// eslint-disable-next-line svelte/no-navigation-without-resolve
 					href={WHATSAPP_URL}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -608,7 +609,7 @@
 		href={FORM_URL}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="block w-full rounded-lg bg-[var(--gs-accent)] py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
+		class="block w-full rounded-lg bg-(--gs-accent) py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
 	>
 		Claim your spot
 	</a>
