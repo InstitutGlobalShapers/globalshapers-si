@@ -210,9 +210,9 @@
 			</p>
 
 			<div class="logo-carousel-mask my-12 overflow-hidden" role="region">
-				<div class="carousel-track flex w-max items-center gap-16">
+				<div class="carousel-track flex w-max items-center">
 					{#each [...logos, ...logos] as logo, i (i)}
-						<img src={logo} alt="Partner company" class="h-7 w-auto max-w-[100px] object-contain opacity-70 grayscale" />
+						<img src={logo} alt="Partner company" class="mr-16 h-7 w-auto max-w-25 object-contain opacity-70 grayscale" />
 					{/each}
 				</div>
 			</div>
@@ -643,7 +643,7 @@
 	}
 
 	.carousel-track {
-		animation: carousel-scroll 30s linear infinite;
+		animation: carousel-scroll 40s linear infinite;
 	}
 
 </style>
